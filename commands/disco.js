@@ -7,7 +7,7 @@ module.exports = function() {
 
         bb8.connect(function() {
 
-            console.log('Connected to - ' + config.BB8_LOCAL_NAME);
+            console.log('Connected to ' + config.BB8_LOCAL_NAME);
 
             setTimeout(function() {
                 bb8.color("green");
