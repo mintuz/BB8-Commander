@@ -1,4 +1,5 @@
-var noble = require('noble');
+var noble = require('noble'),
+    _ = require('lodash');
 
 module.exports = function() {
   
@@ -16,18 +17,26 @@ module.exports = function() {
 
   noble.on('discover', function(peripheral){
 
-    var deviceUUID = peripheral.uuid;
+    if(_.includes(peripheral.advertisement.localName, 'BB-')) {
 
-    console.log('BB8 UUID - "' + deviceID + '"');
-    console.log('Writing to config file');
+      var deviceUUID = peripheral.uuid;
 
-    var config = require('home-config').load('.bb8config', {
-      BB8_UUID: deviceUUID
-    });
+      console.log('BB8 UUID - "' + deviceUUID + '"');
+      console.log('Writing to config file');
 
-    config.save();
+      var config = require('home-config').load('.bb8config', {
+        BB8_UUID: deviceUUID
+      });
 
-    console.log('Saved config file, you can now ctrl+c this task');
+      config.save();
+
+      console.log('Saved config file, you can now ctrl+c this task');
+
+    } else {
+      console.log("This isn't the droid you are looking for");
+      console.log("UUID - " + peripheral.uuid);
+      console.log("Local Name - " + peripheral.advertisement.localName);
+    }
 
   });
 
