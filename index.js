@@ -6,6 +6,6 @@ program.version(packageFile.version);
 program
   .command('setup')
   .description('Command to setup BB8 With your Mac')
-  .action(require('../commands/setup'));
+  .action(require('./commands/setup'));
 
 
