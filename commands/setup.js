@@ -16,13 +16,13 @@ module.exports = function() {
 
   noble.on('discover', function(peripheral){
 
-    var deviceID = peripheral.uuid;
+    var deviceUUID = peripheral.uuid;
 
-    console.log('BB8 ID - "' + deviceID + '"');
+    console.log('BB8 UUID - "' + deviceID + '"');
     console.log('Writing to config file');
 
     var config = require('home-config').load('.bb8config', {
-      BB8_ID: deviceID
+      BB8_UUID: deviceUUID
     });
 
     config.save();
