@@ -16,7 +16,7 @@ module.exports = function() {
 
   noble.on('discover', function(peripheral){
 
-    var deviceID = peripheral.id;
+    var deviceID = peripheral.uuid;
 
     console.log('BB8 ID - "' + deviceID + '"');
     console.log('Writing to config file');
