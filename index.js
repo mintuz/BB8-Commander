@@ -16,7 +16,7 @@ program
 program
   .command('disconnect')
   .description('Command to disconnect from your BB8 Unit')
-  .action(require('./commands/disco'));
+  .action(require('./commands/disconnect'));
 
 try {
   program.parse(process.argv);

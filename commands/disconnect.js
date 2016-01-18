@@ -5,8 +5,8 @@ module.exports = function() {
   
   if(bb8) {
     bb8.disconnect(function() {
-      console.log('disconnected to - ' + config.BB8_UUID);
+      console.log('disconnected from - ' + config.BB8_UUID);
     });
   }
-  
+
 };
