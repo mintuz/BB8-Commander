@@ -9,21 +9,11 @@ module.exports = function() {
 
             console.log('Connected to ' + config.BB8_LOCAL_NAME);
 
-            setTimeout(function() {
-                bb8.color("green");
-            }, 1000);
+            bb8.randomColor();
 
-            setTimeout(function() {
-                bb8.color("blue");
+            setInterval(function() {
+                bb8.randomColor();
             }, 2000);
-
-            setTimeout(function() {
-                bb8.color("red");
-            }, 3000);
-
-            setTimeout(function() {
-                bb8.color("purple");
-            }, 4000);
 
         });
 
