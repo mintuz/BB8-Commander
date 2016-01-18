@@ -13,7 +13,7 @@ module.exports = function() {
 
             setInterval(function() {
                 bb8.randomColor();
-            }, 2000);
+            }, 1000);
 
         });
 
