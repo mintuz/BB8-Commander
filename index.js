@@ -8,4 +8,8 @@ program
   .description('Command to setup BB8 With your Mac')
   .action(require('./commands/setup'));
 
-
+try {
+  program.parse(process.argv);
+} catch (e) {
+  console.error(e);
+}
