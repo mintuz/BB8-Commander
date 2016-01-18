@@ -10,8 +10,23 @@ module.exports = function() {
       
       console.log('connected to - ' + config.BB8_UUID);
       
-      bb8.color("green");
+      setTimeout(function() {
+        bb8.color("green");
+      }, 1000);
+      
+      setTimeout(function() {
+        bb8.color("blue");
+      }, 2000);
+      
+      setTimeout(function() {
+        bb8.color("red");
+      }, 3000);
+
+      setTimeout(function() {
+        bb8.color("purple");
+      }, 3000);
+
     });
   }
-  
+
 };
