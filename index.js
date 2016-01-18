@@ -10,7 +10,12 @@ program
 
 program
   .command('disco')
-  .description('Command to make BB8 A disco ball')
+  .description('Command to make your BB8 Unit A disco ball')
+  .action(require('./commands/disco'));
+
+program
+  .command('disconnect')
+  .description('Command to disconnect from your BB8 Unit')
   .action(require('./commands/disco'));
 
 try {
