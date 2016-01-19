@@ -1,6 +1,6 @@
 var bb8 = require('../libs/bb8-instance')();
 var config = require('../libs/bb8-instance').config;
-var Weather = require('../libs/open-weather-factory');
+var WeatherFactory = require('../libs/open-weather-factory');
 
 module.exports = function(options) {
 
@@ -8,7 +8,7 @@ module.exports = function(options) {
 
         bb8.connect(function() {
 
-            var weatherRequester = Weather({
+            var weatherRequester = WeatherFactory({
                 apiKey: options.apiKey || process.env.WEATHER_KEY,
                 city: options.city || 'manchester',
                 country: options.country || 'uk'
