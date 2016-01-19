@@ -26,8 +26,6 @@ module.exports = function(options) {
                     
                     if(!error && weatherData) {
 
-                        console.log(weatherData);
-
                         if(weatherData.main.temp >= 8) {
 
                             bb8.color('yellow');
