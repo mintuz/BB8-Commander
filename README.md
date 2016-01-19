@@ -1,4 +1,4 @@
-# bb8-commander
+# BB8 Commander
 A Node CLI Tool for Sphero BB8 Robot.
 
 # Install
@@ -21,3 +21,7 @@ Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky gi
 # Contributors
 * [@mintuz](http://twitter.com/mintuz)
 * [@shaunbent](http://twitter.com/shaunbent)
+
+# Want to contribute?
+
+Go ahead, fork it, make a change, issue a PR. We welcome new actions and bug fixes. 
