@@ -8,8 +8,6 @@ module.exports = function(options) {
 
         bb8.connect(function() {
 
-            bb8.color("green");
-
             var weatherRequester = WeatherFactory({
                 accessToken: options.accessToken || process.env.WEATHER_KEY,
                 city: options.city || 'manchester',
@@ -25,27 +23,17 @@ module.exports = function(options) {
             setInterval(function() {
 
                 weatherRequester(function (error, weatherData) {
-                    
-                    console.log(weatherData);
 
                     if(!error && weatherData) {
 
                         if(weatherData.main.temp >= 8) {
-
                             bb8.color('yellow');
-
                         } else if (weatherData.main.temp >= 20) {
-
                             bb8.color('orange');
-
                         } else if (weatherData.main.temp >= 25) {
-                            
                             bb8.color('red');
-
                         } else {
-
                             bb8.color('blue');
-
                         }
 
                     }
