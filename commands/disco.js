@@ -14,7 +14,7 @@ module.exports = function() {
 
             setInterval(function() {
                 bb8.randomColor();
-            }, 1000);
+            }, 600);
 
         });
 

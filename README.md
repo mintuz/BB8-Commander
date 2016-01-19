@@ -8,10 +8,13 @@ Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky gi
 `npm install`
 `node index.js setup`
 
-# Commands
+# Utility Commands
 * `node index.js setup` - Command to save your BB8 Unit UUID to config for future reference
-* `node index.js disco` - Command to turn your BB8 Unit into a shining disco ball in the night
 * `node index.js disconnect` - Command to disconnect from your BB8 Unit
+
+# Action Commands
+* `node index.js disco` - Command to turn your BB8 Unit into a shining disco ball in the night
+* `node index.js weather --city="manchester" --country="uk" --api-key="ABCD"` - Command to turn your BB8 Unit into your very own weather reporter, uses OpenWeather so be sure to get your own API key
 
 # Contributors
 * [@mintuz](http://twitter.com/mintuz)

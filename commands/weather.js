@@ -17,6 +17,7 @@ module.exports = function(options) {
             var WEATHER_ID = process.env.WEATHER_KEY;
 
             console.log('Connected to ' + config.BB8_LOCAL_NAME);
+            console.log('Rain Rain go away, come back another day!');
 
             // Every 10 seconds, lets poll the weather
             setInterval(function() {
