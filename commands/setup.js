@@ -22,9 +22,9 @@ module.exports = function() {
             var deviceUUID = peripheral.uuid,
             localName = peripheral.advertisement.localName;
 
-            console.log('BB8 UUID - "' + deviceUUID + '"');
             console.log('Writing to config file');
-            console.log("Local Name - " + localName);
+            console.log('BB8 UUID - "' + deviceUUID + '"');
+            console.log('Local Name: ' + localName);
 
             var config = require('home-config').load('.bb8config', {
                 BB8_UUID: deviceUUID,
@@ -36,9 +36,9 @@ module.exports = function() {
             console.log('Saved config file, you can now ctrl+c this task');
 
         } else {
-            console.log("This isn't the droid you are looking for");
-            console.log("UUID - " + peripheral.uuid);
-            console.log("Local Name - " + peripheral.advertisement.localName);
+            console.log('This isn\'t the droid you are looking for');
+            console.log('UUID: ' + peripheral.uuid);
+            console.log('Local Name: ' + peripheral.advertisement.localName);
         }
 
     });
