@@ -26,7 +26,7 @@ program
   .command('weather')
   .description('Command to get the weather colour from your BB8 Unit')
   .option('-c, --city <city>', 'City name such as manchester')
-  .option('-cc, --country <country>', 'City name such as uk')
+  .option('-cc, --country <country>', 'Country name such as uk')
   .option('-k, --api-key <apiKey>', 'API Key')
   .action(require('./commands/weather'));
 
