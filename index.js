@@ -36,6 +36,16 @@ program
   .option('-t, --access-token <accessToken>', 'API Key')
   .action(require('./commands/github'));
 
+program
+    .command('roll')
+    .description('BB8 will roll!')
+    .action(require('./commands/roll'));
+
+program
+    .command('tweet')
+    .description('BB8 will respond to tweets!')
+    .action(require('./commands/tweet'));
+
 try {
   program.parse(process.argv);
 } catch (e) {
