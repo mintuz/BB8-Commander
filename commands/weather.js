@@ -4,9 +4,11 @@ var WeatherFactory = require('../libs/open-weather-factory');
 
 module.exports = function(options) {
 
-    if(bb8 && (process.env.WEATHER_KEY || options.accessToken) {
+    if(bb8 && (process.env.WEATHER_KEY || options.accessToken)) {
 
         bb8.connect(function() {
+
+            bb8.color("green");
 
             var weatherRequester = WeatherFactory({
                 accessToken: options.accessToken || process.env.WEATHER_KEY,
@@ -24,6 +26,8 @@ module.exports = function(options) {
 
                 weatherRequester(function (error, weatherData) {
                     
+                    console.log(weatherData);
+
                     if(!error && weatherData) {
 
                         if(weatherData.main.temp >= 8) {
