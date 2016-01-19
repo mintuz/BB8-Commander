@@ -8,6 +8,7 @@ module.exports = function() {
     noble.on('stateChange', function(state) {
 
         if (state === 'poweredOn') {
+            console.log('powered on');
             noble.startScanning();
         } else {
             noble.stopScanning();
@@ -18,6 +19,8 @@ module.exports = function() {
     noble.on('discover', function(peripheral){
 
         if(_.includes(peripheral.advertisement.localName, 'BB-')) {
+
+            console.log(peripheral);
 
             var deviceUUID = peripheral.uuid,
             localName = peripheral.advertisement.localName;
