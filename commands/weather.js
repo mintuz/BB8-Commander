@@ -27,15 +27,15 @@ module.exports = function(options) {
 
                         console.log(weatherData);
 
-                        if(weatherData.main.temp >= 12) {
+                        if(weatherData.main.temp >= 8) {
 
                             bb8.color('yellow');
 
-                        } else if (weatherData.main.temp > 20) {
+                        } else if (weatherData.main.temp >= 20) {
 
                             bb8.color('orange');
 
-                        } else if (weatherData.main.temp > 25) {
+                        } else if (weatherData.main.temp >= 25) {
                             
                             bb8.color('red');
 
