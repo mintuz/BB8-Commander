@@ -4,7 +4,7 @@ var Weather = require('../libs/open-weather-factory');
 
 module.exports = function(options) {
 
-    if(bb8 && process.env.WEATHER_KEY) {
+    if(bb8 && (process.env.WEATHER_KEY || options.apiKey) {
 
         bb8.connect(function() {
 
@@ -24,7 +24,7 @@ module.exports = function(options) {
                 weatherRequester(function (error, weatherData) {
                     
                     if(!error && weatherData) {
-                        
+
                         console.log(weatherData);
 
                         if(weatherData.main.temp >= 12) {
