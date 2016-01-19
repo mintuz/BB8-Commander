@@ -4,12 +4,12 @@ var WeatherFactory = require('../libs/open-weather-factory');
 
 module.exports = function(options) {
 
-    if(bb8 && (process.env.WEATHER_KEY || options.apiKey) {
+    if(bb8 && (process.env.WEATHER_KEY || options.accessToken) {
 
         bb8.connect(function() {
 
             var weatherRequester = WeatherFactory({
-                apiKey: options.apiKey || process.env.WEATHER_KEY,
+                accessToken: options.accessToken || process.env.WEATHER_KEY,
                 city: options.city || 'manchester',
                 country: options.country || 'uk'
             });

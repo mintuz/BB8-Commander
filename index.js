@@ -27,8 +27,14 @@ program
   .description('Command to get the weather colour from your BB8 Unit')
   .option('-c, --city <city>', 'City name such as manchester')
   .option('-cc, --country <country>', 'Country name such as uk')
-  .option('-k, --api-key <apiKey>', 'API Key')
+  .option('-t, --access-token <accessToken>', 'API Key')
   .action(require('./commands/weather'));
+
+program
+  .command('github')
+  .description('Command to get notifications of new issues and PRs')
+  .option('-t, --access-token <accessToken>', 'API Key')
+  .action(require('./commands/github'));
 
 try {
   program.parse(process.argv);

@@ -2,7 +2,7 @@ var request = require('request');
 
 module.exports = function(config) {
 
-  var apiKey = config.apiKey,
+  var accessToken = config.accessToken,
       locationCity = config.city,
       locationCountry = config.country,
       apiVersion = config.apiVersion || 2.5,
@@ -14,7 +14,7 @@ module.exports = function(config) {
   urlStringParts += locationCity  + ',',
   urlStringParts += locationCountry + '&units=',
   urlStringParts += units + '&APPID=',
-  urlStringParts += apiKey;
+  urlStringParts += accessToken;
 
   return function(callback) {
     request(urlStringParts, function(error, response, body) {
