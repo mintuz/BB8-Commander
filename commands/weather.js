@@ -1,6 +1,6 @@
 var bb8 = require('../libs/bb8-instance')();
 var config = require('../libs/bb8-instance').config;
-var weather = require("Openweather-Node");
+var Weather = require('../libs/open-weather-factory');
 
 module.exports = function(options) {
 
@@ -8,19 +8,44 @@ module.exports = function(options) {
 
         bb8.connect(function() {
 
-            weather.setAPPID(process.env.WEATHER_KEY);
-            weather.setCulture("fr");
-            weather.setForecastType("daily");
+            var weatherRequester = Weather({
+                apiKey: options.apiKey || process.env.WEATHER_KEY,
+                city: options.city || 'manchester',
+                country: options.country || 'uk'
+            });
 
-            var location = options.location || 'Manchester, UK';
+            var WEATHER_ID = process.env.WEATHER_KEY;
 
             console.log('Connected to ' + config.BB8_LOCAL_NAME);
 
             // Every 10 seconds, lets poll the weather
             setInterval(function() {
 
-                weather.now(location, function(err, data){
-                    console.log(data);
+                weatherRequester(function (error, weatherData) {
+                    
+                    if(!error && weatherData) {
+                        
+                        console.log(weatherData);
+
+                        if(weatherData.main.temp >= 12) {
+
+                            bb8.color('yellow');
+
+                        } else if (weatherData.main.temp > 20) {
+
+                            bb8.color('orange');
+
+                        } else if (weatherData.main.temp > 25) {
+                            
+                            bb8.color('red');
+
+                        } else {
+
+                            bb8.color('blue');
+
+                        }
+
+                    }
                 });
 
             }, 10000);
