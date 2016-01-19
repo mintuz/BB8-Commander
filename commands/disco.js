@@ -8,12 +8,13 @@ module.exports = function() {
         bb8.connect(function() {
 
             console.log('Connected to ' + config.BB8_LOCAL_NAME);
-
+            console.log('Let\'s Party!!');
+            
             bb8.randomColor();
 
             setInterval(function() {
                 bb8.randomColor();
-            }, 2000);
+            }, 1000);
 
         });
 
