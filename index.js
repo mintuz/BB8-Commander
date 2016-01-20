@@ -22,7 +22,9 @@ program
 program
     .command('disconnect')
     .description('Command to disconnect from your BB8 Unit')
-    .action(require('./commands/disconnect'));
+    .action(function () {
+        executeCommand('./commands/disconnect');
+    });
 
 // Real Actions
 
