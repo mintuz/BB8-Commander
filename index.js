@@ -50,7 +50,9 @@ program
 program
     .command('roll')
     .description('BB8 will roll!')
-    .action(require('./commands/roll'));
+    .action(function () {
+        executeCommand('./commands/roll');
+    });
 
 
 program
