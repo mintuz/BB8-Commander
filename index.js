@@ -39,7 +39,9 @@ program
     .option('-c, --city <city>', 'City name such as manchester')
     .option('-cc, --country <country>', 'Country name such as uk')
     .option('-t, --access-token <accessToken>', 'API Key')
-    .action(require('./commands/weather'));
+    .action(function() {
+        executeCommand('./commands/weather');
+    });
 
 program
     .command('github')
