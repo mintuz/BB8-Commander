@@ -23,14 +23,14 @@ module.exports = function (bb8) {
         TwitterClient.get('search/tweets', {q: 'bb8bbc'}, function (error, tweets) {
             var latestStatus = getLatestStatus(tweets);
             var statusText = latestStatus.text;
-            var command = statusText.split('#')[1];
+            var firstCommand = statusText.split('#')[1];
             var user = getUser(latestStatus);
 
             console.log('This command was written by Hammond without tests. If your machine blows up, blame the lack of tests.')
             console.log('Twitter Command issued by: ', getUsersName(user) + ' (' + screenName(user) + ')');
-            console.log('Issued command: ', command);
+            console.log('Issued command: ', firstCommand);
 
-            require('./' + command.trim())(bb8);
+            require('./' + firstCommand.trim())(bb8);
         });
     };
 
