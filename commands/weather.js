@@ -1,4 +1,3 @@
-var bb8 = require('../libs/bb8-instance')();
 var WeatherFactory = require('../libs/open-weather-factory');
 
 module.exports = function (bb8, options) {
@@ -12,7 +11,6 @@ module.exports = function (bb8, options) {
 
         var WEATHER_ID = process.env.WEATHER_KEY;
 
-        console.log('Connected to ' + config.BB8_LOCAL_NAME);
         console.log('Rain Rain go away, come back another day!');
 
         // Every 10 seconds, lets poll the weather
@@ -38,7 +36,7 @@ module.exports = function (bb8, options) {
         }, 10000);
 
     } else {
-        console.log('BB8 Config isnt set or the WEATHER_KEY env for openweather is not present');
+        console.log('WEATHER_KEY env for openweather is not present');
     }
 
 };
