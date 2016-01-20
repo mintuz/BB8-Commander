@@ -21,9 +21,9 @@ module.exports = function (bb8) {
 
     var executeTwitterCommand = function () {
         TwitterClient.get('search/tweets', {q: 'bb8bbc'}, function (error, tweets) {
-            var statusText = tweets.statuses[0].text;
-            var command = statusText.split('#')[1];
             var latestStatus = getLatestStatus(tweets);
+            var statusText = latestStatus.text;
+            var command = statusText.split('#')[1];
             var user = getUser(latestStatus);
 
             console.log('This command was written by Hammond without tests. If your machine blows up, blame the lack of tests.')
