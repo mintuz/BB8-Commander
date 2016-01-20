@@ -1,19 +1,7 @@
 var TwitterClient = require('../libs/twitter-client-instance');
 
-function getUsersName(user) {
-    return user.name;
-}
-
-function screenName(user) {
-    return user.screen_name;
-}
-
 function getLatestStatus(tweets) {
     return tweets.statuses[0];
-}
-
-function getUser(status) {
-    return status.user;
 }
 
 module.exports = function (bb8) {
@@ -24,10 +12,10 @@ module.exports = function (bb8) {
             var latestStatus = getLatestStatus(tweets);
             var statusText = latestStatus.text;
             var firstCommand = statusText.split('#')[1];
-            var user = getUser(latestStatus);
-
+            var user = latestStatus.user;
+            
             console.log('This command was written by Hammond without tests. If your machine blows up, blame the lack of tests.')
-            console.log('Twitter Command issued by: ', getUsersName(user) + ' (' + screenName(user) + ')');
+            console.log('Twitter Command issued by: ', user.name + ' (' + user.screen_name + ')');
             console.log('Issued command: ', firstCommand);
 
             require('./' + firstCommand.trim())(bb8);
