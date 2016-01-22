@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/mintuz/bb8-commander#readme",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "commander": "^2.9.0",
+    "express": "^4.13.4",
     "github": "^0.2.4",
     "home-config": "^0.1.0",
     "lodash": "^4.0.0",

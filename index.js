@@ -36,6 +36,11 @@ program
   .option('-t, --access-token <accessToken>', 'API Key')
   .action(require('./commands/github'));
 
+program
+  .command('express')
+  .description('Command to setup express server')
+  .action(require('./commands/express'));
+
 try {
   program.parse(process.argv);
 } catch (e) {
