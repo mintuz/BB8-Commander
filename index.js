@@ -2,10 +2,10 @@ var program = require('commander');
 var packageFile = require('./package.json');
 var bb8 = require('./libs/bb8-instance')();
 var config = require('./libs/bb8-instance').config;
-var executeCommand = function (command) {
+var executeCommand = function (command, options) {
     if (bb8) {
         bb8.connect(function () {
-            require(command)(bb8)
+            require(command)(bb8, options)
         });
     }
 };
@@ -22,8 +22,8 @@ program
 program
     .command('disconnect')
     .description('Command to disconnect from your BB8 Unit')
-    .action(function () {
-        executeCommand('./commands/disconnect');
+    .action(function (options) {
+        executeCommand('./commands/disconnect', options);
     });
 
 // Real Actions
@@ -41,8 +41,8 @@ program
     .option('-c, --city <city>', 'City name such as manchester')
     .option('-cc, --country <country>', 'Country name such as uk')
     .option('-t, --access-token <accessToken>', 'API Key')
-    .action(function() {
-        executeCommand('./commands/weather');
+    .action(function(options) {
+        executeCommand('./commands/weather', options);
     });
 
 program
@@ -62,8 +62,10 @@ program
 program
     .command('tweet')
     .description('BB8 will respond to tweets!')
-    .action(function () {
-        executeCommand('./commands/tweet')
+    .option('-#, --hash-tag <hashTag>', 'Hashtag to search for. Defaults to "#bb8bbc"')
+    .option('-d, --delay <delay>', 'Interval delay for retrieving new tweets. Defaults to 10000')
+    .action(function (options) {
+        executeCommand('./commands/tweet', options)
     });
 
 try {

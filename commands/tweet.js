@@ -4,16 +4,20 @@ function getLatestStatus(tweets) {
     return tweets.statuses[0];
 }
 
-module.exports = function (bb8) {
-    console.log('Let\'s Get Tweets!!');
+module.exports = function (bb8, options) {
+    var intervalDelay = options.delay || 10000;
+
+    console.log('Let\'s get tweets!');
 
     var executeTwitterCommand = function () {
-        TwitterClient.get('search/tweets', {q: 'bb8bbc'}, function (error, tweets) {
+        var hashTag = options.hashTag || 'bb8bbc';
+
+        TwitterClient.get('search/tweets', {q: hashTag}, function (error, tweets) {
             var latestStatus = getLatestStatus(tweets);
             var statusText = latestStatus.text;
             var firstCommand = statusText.split('#')[1];
             var user = latestStatus.user;
-            
+
             console.log('This command was written by Hammond without tests. If your machine blows up, blame the lack of tests.')
             console.log('Twitter Command issued by: ', user.name + ' (' + user.screen_name + ')');
             console.log('Issued command: ', firstCommand);
@@ -26,7 +30,7 @@ module.exports = function (bb8) {
 
     setInterval(function () {
         executeTwitterCommand();
-    }, 10000);
+    }, intervalDelay);
 };
 
 
