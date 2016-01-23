@@ -1,5 +1,5 @@
 var bb8 = require('../libs/bb8-instance')(),
-    config = require('../libs/bb8-instance').config,,
+    config = require('../libs/bb8-instance').config,
     expressInstance = require('../libs/express');
 
 module.exports = function() {
