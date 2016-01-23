@@ -2,6 +2,7 @@ var program = require('commander');
 var packageFile = require('./package.json');
 var bb8 = require('./libs/bb8-instance')();
 var config = require('./libs/bb8-instance').config;
+
 var executeCommand = function (command, options) {
     if (bb8) {
         bb8.connect(function () {
@@ -64,6 +65,10 @@ program
     .description('BB8 will respond to tweets!')
     .option('-#, --hash-tag <hashTag>', 'Hashtag to search for. Defaults to "#bb8bbc"')
     .option('-d, --delay <delay>', 'Interval delay for retrieving new tweets. Defaults to 10000')
+    .option('--consumer-key <consumerKey>', 'Twitter api consumer key')
+    .option('--consumer-secret <consumerSecret>', 'Twitter api consumer secret')
+    .option('--access-token-key <accessTokenKey>', 'Twitter api access token key')
+    .option('--access-token-secret <accessTokenSecret>', 'Twitter api access token secret')
     .action(function (options) {
         executeCommand('./commands/tweet', options)
     });

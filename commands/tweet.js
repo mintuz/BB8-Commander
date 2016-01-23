@@ -5,14 +5,14 @@ function getLatestStatus(tweets) {
 }
 
 module.exports = function (bb8, options) {
-    var intervalDelay = options.delay || 10000;
+    var intervalDelay = options.delay || 10000,
+        twitter = TwitterClient(options);
 
     console.log('Let\'s get tweets!');
-
     var executeTwitterCommand = function () {
         var hashTag = options.hashTag || 'bb8bbc';
 
-        TwitterClient.get('search/tweets', {q: hashTag}, function (error, tweets) {
+        twitter.get('search/tweets', {q: hashTag}, function (error, tweets) {
             var latestStatus = getLatestStatus(tweets);
             var statusText = latestStatus.text;
             var firstCommand = statusText.split('#')[1];
