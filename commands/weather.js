@@ -9,8 +9,6 @@ module.exports = function (bb8, options) {
             country: options.country || 'uk'
         });
 
-        var WEATHER_ID = process.env.WEATHER_KEY;
-
         console.log('Rain Rain go away, come back another day!');
 
         // Every 10 seconds, lets poll the weather
