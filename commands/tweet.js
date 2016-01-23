@@ -9,11 +9,11 @@ function getLatestStatus(tweets) {
         var latestTweet = tweets.statuses[0];
 
         if(alreadyTriggeredTweets[latestTweet.id_str]) {
-            return false
+            return false;
         }
 
         alreadyTriggeredTweets[latestTweet.id_str] = true;
-        
+
         return tweets.statuses[0];
     }
 
