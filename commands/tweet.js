@@ -1,9 +1,19 @@
 var TwitterClient = require('../libs/twitter-client-instance'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    alreadyTriggeredTweets = {};
 
 function getLatestStatus(tweets) {
 
     if(tweets && !tweets.errors) {
+
+        var latestTweet = tweets.statuses[0];
+
+        if(alreadyTriggeredTweets[latestTweet.id_str]) {
+            return false
+        }
+
+        alreadyTriggeredTweets[latestTweet.id_str] = true;
+        
         return tweets.statuses[0];
     }
 
