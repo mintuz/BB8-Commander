@@ -35,6 +35,3 @@ node_modules
 
 #Intellij settings
 .idea
-
-#twitter api passwords
-config/twitter_keys.js
