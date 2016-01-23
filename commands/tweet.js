@@ -1,35 +1,49 @@
-var TwitterClient = require('../libs/twitter-client-instance');
+var TwitterClient = require('../libs/twitter-client-instance'),
+    _ = require('lodash');
 
 function getLatestStatus(tweets) {
-    return tweets.statuses[0];
+
+    if(tweets && !tweets.errors) {
+        return tweets.statuses[0];
+    }
+
+    return false;
+
 }
 
+var executeTwitterCommand = function (bb8, options) {
+    
+    var twitter = TwitterClient(options),
+        hashTag = options.hashTag || 'bb8code';
+
+    twitter.get('search/tweets', {q: hashTag}, function (error, tweets) {
+        
+        var latestStatus = getLatestStatus(tweets);
+
+        if(latestStatus) {
+
+            var command = _.trim(_.replace(_.replace(latestStatus.text, /#/g, ''), hashTag, '')),
+                user = latestStatus.user;
+
+            console.log('Twitter Command issued by: ', user.name + ' (' + user.screen_name + ')');
+            console.log('Issued command: ', command);
+
+            require('./' + command)(bb8);
+        }
+    });
+};
+
 module.exports = function (bb8, options) {
-    var intervalDelay = options.delay || 10000,
-        twitter = TwitterClient(options);
+    var intervalDelay = options.delay || 10000;
 
     console.log('Let\'s get tweets!');
-    var executeTwitterCommand = function () {
-        var hashTag = options.hashTag || 'bb8bbc';
 
-        twitter.get('search/tweets', {q: hashTag}, function (error, tweets) {
-            var latestStatus = getLatestStatus(tweets);
-            var statusText = latestStatus.text;
-            var firstCommand = statusText.split('#')[1];
-            var user = latestStatus.user;
+    var commanderExecuter = _.partial(executeTwitterCommand, bb8, options);
 
-            console.log('This command was written by Hammond without tests. If your machine blows up, blame the lack of tests.')
-            console.log('Twitter Command issued by: ', user.name + ' (' + user.screen_name + ')');
-            console.log('Issued command: ', firstCommand);
-
-            require('./' + firstCommand.trim())(bb8);
-        });
-    };
-
-    executeTwitterCommand();
+    commanderExecuter();
 
     setInterval(function () {
-        executeTwitterCommand();
+        commanderExecuter();
     }, intervalDelay);
 };
 
