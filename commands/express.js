@@ -12,40 +12,32 @@ var callbackFactory = function(res){
     };
 };
 
-module.exports = function() {
+module.exports = function(bb8, options) {
 
-    if(bb8) {
+    expressInstance(function (req, res) {
 
-        bb8.connect(function() {
+        var requestBody = req.body;
 
-            console.log('Connected to ' + config.BB8_LOCAL_NAME);
+        if(requestBody.action && requestBody.mode === 'sphero') {
 
-            expressInstance(function (req, res) {
+            if(typeof(requestBody.value) === 'string') {
 
-                var requestBody = req.body;
+                bb8[requestBody.action](requestBody.value, callbackFactory(res));
 
-                if(requestBody.action && requestBody.mode === 'sphero') {
+            } else if(typeof(requestBody.value) === 'object') {
 
-                    if(typeof(requestBody.value) === 'string') {
+                requestBody.value.push(callbackFactory(res));
 
-                        bb8[requestBody.action](requestBody.value, callbackFactory(res));
+                bb8[requestBody.action].apply(this, requestBody.value);
 
-                    } else if(typeof(requestBody.value) === 'object') {
+            } else {
 
-                        requestBody.value.push(callbackFactory(res));
+                bb8[requestBody.action](callbackFactory(res));
 
-                        bb8[requestBody.action].apply(this, requestBody.value);
+            }
 
-                    } else {
-
-                        bb8[requestBody.action](callbackFactory(res));
-
-                    }
-
-                } else {
-                    res.send('Command is invalid');
-                }
-            });
-        });
-    }
+        } else {
+            res.send('Command is invalid');
+        }
+    });
 };

@@ -1,15 +1,6 @@
-var program = require('commander');
-var packageFile = require('./package.json');
-var bb8 = require('./libs/bb8-instance')();
-var config = require('./libs/bb8-instance').config;
-
-var executeCommand = function (command, options) {
-    if (bb8) {
-        bb8.connect(function () {
-            require(command)(bb8, options)
-        });
-    }
-};
+var program = require('commander'),
+    packageFile = require('./package.json'),
+    executeCommand = require('./libs/execute-command');
 
 program.version(packageFile.version);
 
@@ -76,7 +67,9 @@ program
 program
   .command('express')
   .description('Command to setup express server')
-  .action(require('./commands/express'));
+  .action(function () {
+      executeCommand('./commands/express');
+  });
 
 try {
     program.parse(process.argv);
