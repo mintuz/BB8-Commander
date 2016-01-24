@@ -24,7 +24,7 @@ program
     .command('disco')
     .description('Command to make your BB8 Unit A disco ball')
     .action(function () {
-        executeCommand('./commands/disco');
+        executeCommand('disco');
     });
 
 program
@@ -34,20 +34,20 @@ program
     .option('-cc, --country <country>', 'Country name such as uk')
     .option('-t, --access-token <accessToken>', 'API Key')
     .action(function(options) {
-        executeCommand('./commands/weather', options);
+        executeCommand('weather', options);
     });
 
 program
     .command('github')
     .description('Command to get notifications of new issues and PRs')
     .option('-t, --access-token <accessToken>', 'API Key')
-    .action(require('./commands/github'));
+    .action(require('github'));
 
 program
     .command('roll')
     .description('BB8 will roll!')
     .action(function () {
-        executeCommand('./commands/roll');
+        executeCommand('roll');
     });
 
 
@@ -61,14 +61,14 @@ program
     .option('--access-token-key <accessTokenKey>', 'Twitter api access token key')
     .option('--access-token-secret <accessTokenSecret>', 'Twitter api access token secret')
     .action(function (options) {
-        executeCommand('./commands/tweet', options)
+        executeCommand('tweet', options)
     });
 
 program
   .command('express')
   .description('Command to setup express server')
   .action(function () {
-      executeCommand('./commands/express');
+      executeCommand('express');
   });
 
 try {

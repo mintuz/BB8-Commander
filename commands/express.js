@@ -1,6 +1,7 @@
 var bb8 = require('../libs/bb8-instance')(),
     config = require('../libs/bb8-instance').config,
-    expressInstance = require('../libs/express');
+    expressInstance = require('../libs/express'),
+    executeCustomCommand = require('../libs/execute-command');
 
 var callbackFactory = function(res){
     return function(err, data){
@@ -12,6 +13,46 @@ var callbackFactory = function(res){
     };
 };
 
+var spheroCommandExecuter = function(bb8, requestBody, res) {
+
+    if(typeof(requestBody.value) === 'string') {
+
+        bb8[requestBody.action](requestBody.value, callbackFactory(res));
+
+    } else if(typeof(requestBody.value) === 'object') {
+
+        requestBody.value.push(callbackFactory(res));
+
+        bb8[requestBody.action].apply(this, requestBody.value);
+
+    } else {
+
+        bb8[requestBody.action](callbackFactory(res));
+
+    }
+
+};
+
+var customCommandExecuter = function(bb8, requestBody, res){
+    
+    if(typeof(requestBody.value) === 'string') {
+    
+        executeCustomCommand.alreadyConnectedSingleValue(bb8, requestBody.action, requestBody.value);
+
+    } else if(typeof(requestBody.value) === 'object') {
+    
+        executeCustomCommand.alreadyConnectedMultipleValues(bb8, requestBody.action, requestBody.value);
+    
+    } else {
+
+        executeCustomCommand.alreadyConnected(bb8, requestBody.action);
+
+    }
+
+    res.send('Command Executed - ' + requestBody.action);
+
+};
+
 module.exports = function(bb8, options) {
 
     expressInstance(function (req, res) {
@@ -20,24 +61,17 @@ module.exports = function(bb8, options) {
 
         if(requestBody.action && requestBody.mode === 'sphero') {
 
-            if(typeof(requestBody.value) === 'string') {
+            spheroCommandExecuter(bb8, req.body, res);
 
-                bb8[requestBody.action](requestBody.value, callbackFactory(res));
+        } else if(requestBody.action && requestBody.mode === 'custom') {
 
-            } else if(typeof(requestBody.value) === 'object') {
-
-                requestBody.value.push(callbackFactory(res));
-
-                bb8[requestBody.action].apply(this, requestBody.value);
-
-            } else {
-
-                bb8[requestBody.action](callbackFactory(res));
-
-            }
-
+            customCommandExecuter(bb8, req.body, res);
+            
         } else {
+
             res.send('Command is invalid');
+
         }
+        
     });
 };
