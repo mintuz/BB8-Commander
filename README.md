@@ -6,9 +6,10 @@ A Node CLI Tool for Sphero BB8 Robot using the [Sphero Javascript SDK](http://sd
 # Install
 Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky git clone
 
-`git clone git@github.com:mintuz/bb8-commander.git`
-`npm install`
-`node index.js setup`
+* `git clone git@github.com:mintuz/bb8-commander.git`
+* `npm install`
+* `node index.js setup`
+* Use commands below
 
 # Commands
 
