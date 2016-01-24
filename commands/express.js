@@ -72,6 +72,6 @@ module.exports = function(bb8, options) {
             res.send('Command is invalid');
 
         }
-        
-    });
+
+    }, options);
 };

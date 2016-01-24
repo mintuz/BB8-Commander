@@ -67,8 +67,9 @@ program
 program
   .command('express')
   .description('Command to setup express server')
-  .action(function () {
-      executeCommand('express');
+  .option('-p, --port <port>', 'Port to run express on. Defaults to 3000')
+  .action(function (options) {
+      executeCommand('express', options);
   });
 
 try {
