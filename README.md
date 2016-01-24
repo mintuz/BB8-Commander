@@ -22,7 +22,7 @@ Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky gi
 * `node index.js tweet --hash-tag="bb8" --delay=5000` - Command to search twitter and run the first hashtag it finds as a command. Eg a tweet "#disco #bb8" would run the `disco` command --consumer-key xxx --consumer-secret xxx --access-token-key xxx --access-token-secret xxx
 * `node index.js express --port=4000` - Command to run an express server which has a single POST endpoint which you can send a JSON object to. See below for more details.
 
-#### Express Server
+### Express Server
 
 Having the ability to run an Express server to issue commands to the BB8 unit opens up a bunch of possibilities. One of the main benefits of having an Express server is that you can integrate into [IFTTT](https://ifttt.com/) and at that point, you have entered the Internet of things.
 
@@ -30,11 +30,11 @@ To get started is really easy, all you need to do is run `node index.js express 
 
 You can then send commands directly to it via a POST request. It supports any SpheroSDK command as well as custom commands we have created. See below for some examples.
 
-##### Native Commands
+### Native Commands
 
 With native commands, the response body will include information the BB8 exposes once that command has been executed. Read the Sphero documentation on what data it returns. http://sdk.sphero.com/community-apis/javascript-sdk/
 
-##### Running the `color` command
+#### Running the `color` command
 
 Post Request - localhost:3000/
 
@@ -48,7 +48,7 @@ Request Body
 }
 ```
 
-##### Running the `roll` command
+#### Running the `roll` command
 
 Post Request - localhost:3000/
 
@@ -64,9 +64,9 @@ Request Body
 
 With this request, we are passing an array and that's because the roll command in Sphero SDK requires multiple parameters. This is just a simple way to pass those values to that command.
 
-##### Custom Commands
+### Custom Commands
 
-##### Running the `disco` command
+#### Running the `disco` command
 
 Post Request - localhost:3000/
 
@@ -79,7 +79,7 @@ Request Body
 }
 ```
 
-##### Running the `tweet` command
+#### Running the `tweet` command
 
 POST Request - localhost:3000/
 
