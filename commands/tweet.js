@@ -22,7 +22,7 @@ function getLatestStatus(tweets) {
 }
 
 var executeTwitterCommand = function (bb8, options) {
-    
+
     var twitter = TwitterClient(options),
         hashTag = options.hashTag || 'bb8code';
 

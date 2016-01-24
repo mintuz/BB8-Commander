@@ -1,15 +1,6 @@
-var program = require('commander');
-var packageFile = require('./package.json');
-var bb8 = require('./libs/bb8-instance')();
-var config = require('./libs/bb8-instance').config;
-
-var executeCommand = function (command, options) {
-    if (bb8) {
-        bb8.connect(function () {
-            require(command)(bb8, options)
-        });
-    }
-};
+var program = require('commander'),
+    packageFile = require('./package.json'),
+    executeCommand = require('./libs/execute-command');
 
 program.version(packageFile.version);
 
@@ -33,7 +24,7 @@ program
     .command('disco')
     .description('Command to make your BB8 Unit A disco ball')
     .action(function () {
-        executeCommand('./commands/disco');
+        executeCommand('disco');
     });
 
 program
@@ -43,20 +34,20 @@ program
     .option('-cc, --country <country>', 'Country name such as uk')
     .option('-t, --access-token <accessToken>', 'API Key')
     .action(function(options) {
-        executeCommand('./commands/weather', options);
+        executeCommand('weather', options);
     });
 
 program
     .command('github')
     .description('Command to get notifications of new issues and PRs')
     .option('-t, --access-token <accessToken>', 'API Key')
-    .action(require('./commands/github'));
+    .action(require('github'));
 
 program
     .command('roll')
     .description('BB8 will roll!')
     .action(function () {
-        executeCommand('./commands/roll');
+        executeCommand('roll');
     });
 
 
@@ -70,8 +61,16 @@ program
     .option('--access-token-key <accessTokenKey>', 'Twitter api access token key')
     .option('--access-token-secret <accessTokenSecret>', 'Twitter api access token secret')
     .action(function (options) {
-        executeCommand('./commands/tweet', options)
+        executeCommand('tweet', options)
     });
+
+program
+  .command('express')
+  .description('Command to setup express server')
+  .option('-p, --port <port>', 'Port to run express on. Defaults to 3000')
+  .action(function (options) {
+      executeCommand('express', options);
+  });
 
 try {
     program.parse(process.argv);
