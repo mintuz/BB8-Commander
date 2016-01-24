@@ -16,11 +16,11 @@ var callbackFactory = function(res){
 
 var spheroCommandExecuter = function(bb8, requestBody, res) {
 
-    if(typeof(requestBody.value) === 'string') {
+    if(_.isString(requestBody.value)) {
 
         bb8[requestBody.action](requestBody.value, callbackFactory(res));
 
-    } else if(typeof(requestBody.value) === 'object') {
+    } else if(_.isArray(requestBody.value)) {
 
         requestBody.value.push(callbackFactory(res));
 
@@ -46,7 +46,7 @@ var customCommandExecuter = function(bb8, requestBody, res){
     
     } else {
 
-        executeCustomCommand.alreadyConnected(bb8, requestBody.action);
+        executeCustomCommand.alreadyConnectedSingleValue(bb8, requestBody.action, {});
 
     }
 
