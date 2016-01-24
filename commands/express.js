@@ -1,7 +1,8 @@
 var bb8 = require('../libs/bb8-instance')(),
     config = require('../libs/bb8-instance').config,
     expressInstance = require('../libs/express'),
-    executeCustomCommand = require('../libs/execute-command');
+    executeCustomCommand = require('../libs/execute-command'),
+    _ = require('lodash');
 
 var callbackFactory = function(res){
     return function(err, data){
@@ -34,12 +35,12 @@ var spheroCommandExecuter = function(bb8, requestBody, res) {
 };
 
 var customCommandExecuter = function(bb8, requestBody, res){
-    
-    if(typeof(requestBody.value) === 'string') {
+
+    if(_.isString(requestBody.value) || _.isObject(requestBody.value)) {
     
         executeCustomCommand.alreadyConnectedSingleValue(bb8, requestBody.action, requestBody.value);
 
-    } else if(typeof(requestBody.value) === 'object') {
+    } else if(_.isArray(requestBody.value)) {
     
         executeCustomCommand.alreadyConnectedMultipleValues(bb8, requestBody.action, requestBody.value);
     
