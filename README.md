@@ -1,5 +1,5 @@
 # BB8 Commander
-A Node CLI Tool for Sphero BB8 Robot.
+A Node CLI Tool for Sphero BB8 Robot using the [Sphero Javascript SDK](http://sdk.sphero.com/community-apis/javascript-sdk/)
 
 ![BB8 Rolling like he's owning](http://i.imgur.com/00sZIf3.gif)
 
