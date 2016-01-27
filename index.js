@@ -76,7 +76,7 @@ program
   .command('desk-buddy')
   .description('Command to keep you company whilst working at your desk. Place your BB8 in the charging station.')
   .action(function (options) {
-      executeCommand('desk-buddy', options);
+      executeCommand('desk-buddy');
   });
 
 try {
