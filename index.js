@@ -61,7 +61,7 @@ program
     .option('--access-token-key <accessTokenKey>', 'Twitter api access token key')
     .option('--access-token-secret <accessTokenSecret>', 'Twitter api access token secret')
     .action(function (options) {
-        executeCommand('tweet', options)
+        executeCommand('tweet', options);
     });
 
 program
@@ -77,6 +77,13 @@ program
   .description('Command to keep you company whilst working at your desk. Place your BB8 in the charging station.')
   .action(function (options) {
       executeCommand('desk-buddy');
+  });
+
+program
+  .command('power')
+  .description('Command to get the power state of the BB-8')
+  .action(function (options) {
+    executeCommand('power');
   });
 
 try {

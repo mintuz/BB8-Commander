@@ -12,21 +12,21 @@ module.exports = function (command, options) {
 
 module.exports.alreadyConnected = function(bb8, command) {
   if (bb8) {
-    require(appRootPath + '/commands/' + command)(bb8);  
+    require(appRootPath + '/commands/' + command)(bb8);
   }
-}
+};
 
 module.exports.alreadyConnectedSingleValue = function(bb8, command, options) {
   if (bb8) {
-    require(appRootPath + '/commands/' + command)(bb8, options);  
+    require(appRootPath + '/commands/' + command)(bb8, options);
   }
 };
 
 module.exports.alreadyConnectedMultipleValues = function(bb8, command, options) {
-  
+
   if (bb8) {
     var parameters = _.union([bb8], options);
-    require(appRootPath + '/commands/' + command).apply(this, parameters);  
+    require(appRootPath + '/commands/' + command).apply(this, parameters);
   }
 
 };
