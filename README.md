@@ -23,6 +23,7 @@ Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky gi
 * `node index.js desk-buddy` - A command to keep you company whilst working at your desk. Place in it's charging station to watch its head move round randomly.
 * `node index.js weather --city="manchester" --country="uk" --api-key="ABCD"` - Command to turn your BB8 Unit into your very own weather reporter, uses OpenWeather so be sure to get your own API key
 * `node index.js tweet --hash-tag="bb8" --delay=5000` - Command to search twitter and run the first hashtag it finds as a command. Eg a tweet "#disco #bb8" would run the `disco` command --consumer-key xxx --consumer-secret xxx --access-token-key xxx --access-token-secret xxx
+* `node index.js power` - A command to get details of the battery state.
 * `node index.js express --port=4000` - Command to run an express server which has a single POST endpoint which you can send a JSON object to. See below for more details.
 
 ### Express Server
@@ -44,8 +45,8 @@ Post Request - localhost:3000/
 Request Body
 
 ```
-{ 
-  "mode":"sphero", 
+{
+  "mode":"sphero",
   "command":"color",
   "value": "yellow"
 }
@@ -58,8 +59,8 @@ Post Request - localhost:3000/
 Request Body
 
 ```
-{ 
-  "mode":"sphero", 
+{
+  "mode":"sphero",
   "command":"roll",
   "value": [130, 50]
 }
@@ -76,8 +77,8 @@ Post Request - localhost:3000/
 Request Body
 
 ```
-{ 
-  "mode":"custom", 
+{
+  "mode":"custom",
   "command":"disco"
 }
 ```
@@ -90,8 +91,8 @@ Request Body
 
 ```
 {
-  "mode":"custom", 
-  "command":"tweet", 
+  "mode":"custom",
+  "command":"tweet",
   "value": {
     "delay": 30,
     "consumerKey": "YOUR_CONSUMER_KEY",
@@ -113,4 +114,4 @@ A suite difference between native commands and custom commands is that native co
 
 # Want to contribute?
 
-Go ahead, fork it, make a change, issue a PR. We welcome new actions and bug fixes. 
+Go ahead, fork it, make a change, issue a PR. We welcome new actions and bug fixes.
