@@ -111,6 +111,7 @@ A suite difference between native commands and custom commands is that native co
 * [@mintuz](http://twitter.com/mintuz)
 * [@shaunbent](http://twitter.com/shaunbent)
 * [@citypaul](http://twitter.com/paulhammond)
+* [@sud-puth](http://twitter.com/sud_)
 
 # Want to contribute?
 
