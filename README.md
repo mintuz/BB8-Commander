@@ -24,6 +24,7 @@ Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky gi
 * `node index.js weather --city="manchester" --country="uk" --api-key="ABCD"` - Command to turn your BB8 Unit into your very own weather reporter, uses OpenWeather so be sure to get your own API key
 * `node index.js tweet --hash-tag="bb8" --delay=5000` - Command to search twitter and run the first hashtag it finds as a command. Eg a tweet "#disco #bb8" would run the `disco` command --consumer-key xxx --consumer-secret xxx --access-token-key xxx --access-token-secret xxx
 * `node index.js power` - A command to get details of the battery state.
+* `node index.js drive` - A command to enable you to take input from the keyboard and 'drive' your BB-8 with the arrow keys.
 * `node index.js express --port=4000` - Command to run an express server which has a single POST endpoint which you can send a JSON object to. See below for more details.
 
 ### Express Server

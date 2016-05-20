@@ -86,6 +86,13 @@ program
     executeCommand('power');
   });
 
+program
+  .command('drive')
+  .description('Command to accept keyboard input--use arrow keys')
+  .action(function (options) {
+    executeCommand('drive');
+  });
+
 try {
     program.parse(process.argv);
 } catch (e) {

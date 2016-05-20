@@ -30,7 +30,8 @@
     "play-sound": "0.0.7",
     "request": "^2.67.0",
     "sphero": "^0.7.0",
-    "twitter": "^1.2.5"
+    "twitter": "^1.2.5",
+    "keypress": "0.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.8.1"
