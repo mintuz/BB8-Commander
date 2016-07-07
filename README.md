@@ -108,6 +108,9 @@ Obviously you wouldn’t pass your OAuth information like this (BB8 Commander su
 
 A suite difference between native commands and custom commands is that native commands that require multiple parameters will be passed as an array whilst custom commands will be objects. The reason for this is custom commands are key value pairs due to them sharing the same code as the CLI tool.
 
+# Examples
+* [How to have Hubot talk to BB-8 using Express Server](https://medium.com/@saraford/how-to-have-hubot-in-slack-send-commands-to-bb-8-700d2f3c953d) by [@saraford](https://github.com/saraford)
+
 # Contributors
 * [@mintuz](http://twitter.com/mintuz)
 * [@shaunbent](http://twitter.com/shaunbent)
