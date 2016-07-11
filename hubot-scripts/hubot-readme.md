@@ -292,9 +292,36 @@ Press enter again to get the text-bot> back.
 
 Remember optional part 5 where we played with Ruby scripts? This section is why. I wanted to make sure I could call the HTTP POST request correctly from Ruby before I try from Hubot.
 
-Create a file called bb8.coffee at /test-bot/scripts (where you were previously when your ran ./bin/hubot) and add the following coffescript.
+You can either create a coffeescript file or a javascript file. For this readme, we'll stick to javascript. 
+
+Create a file called bb8.js at /test-bot/scripts (where you were previously when your ran ./bin/hubot) and add the following javascript.
 
 What’s going on is whenever we say “test-bot ask bb8 to turn <color>”, hubot test-bot will pass the request along to the Express server.
+
+```
+module.exports = function(robot) {
+    robot.respond(/ask BB-8 to turn (.*)/i, function(msg) {
+    var color, data;
+    color = msg.match[1];
+      data = JSON.stringify({
+        mode: 'sphero',
+        command: 'color',
+        value: color
+      });
+    return robot.http("http://localhost:4000")
+                .header('Content-Type', 'application/json')
+                .post(data)(function(err, res, body) {
+        if (res.statusCode !== 200) {
+          return msg.send("Request didn't come back HTTP 200 :(");
+        } else {
+          return msg.send("bb-8 is now " + color + "!");
+        }
+    });
+  });
+}
+```
+
+Just in case coffee is more your style, here's the coffescript:
 
 ```
 module.exports = (robot) ->
@@ -314,7 +341,7 @@ module.exports = (robot) ->
          msg.send "bb-8 is now #{color}!"
 ```
 
-I’ll leave you to your coffeescript explorations :)
+I’ll leave you to your hubot script explorations :)
 
 ### Ask Hubot to talk to BB-8
 
