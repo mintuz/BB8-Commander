@@ -21,6 +21,13 @@ program
 // Real Actions
 
 program
+    .command("dance")
+    .description("dance dance BB-8")
+    .action(function () {
+        executeCommand("dance");
+    });
+
+program
     .command('disco')
     .description('Command to make your BB8 Unit A disco ball')
     .action(function () {
