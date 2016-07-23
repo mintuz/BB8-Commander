@@ -87,6 +87,13 @@ program
   });
 
 program
+  .command('train')
+  .description('How to train your BB-8')
+  .action(function (options) {
+    executeCommand('train');
+  });
+
+program
   .command('drive')
   .description('Command to accept keyboard input--use arrow keys')
   .action(function (options) {
