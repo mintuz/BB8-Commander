@@ -55,6 +55,7 @@ module.exports = function (bb8) {
 
     }
 
+    // Found at https://github.com/orbotix/sphero.js/issues/45#issuecomment-221169893
     if(key && key.name === 'y') {
 
       // YES
