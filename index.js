@@ -87,10 +87,10 @@ program
   });
 
 program
-  .command('train')
-  .description('How to train your BB-8')
+  .command('gestures')
+  .description('Some gestures for your BB-8')
   .action(function (options) {
-    executeCommand('train');
+    executeCommand('gestures');
   });
 
 program
