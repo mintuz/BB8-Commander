@@ -10,12 +10,17 @@ module.exports = function (bb8) {
   console.log("Press 'e' to calibrate. Press 'q' to finish calibration.");
   console.log("Press 'y' for yes. Press 'n' for no. Press 't' to do the twist!");
   console.log("Put BB-8 into the dock and press 'h' for head roll. ");
-  console.log('Press ctrl+c to exit.');
+  console.log("Press ctrl+c to exit.");
   console.log("Listening for key presses...");
+  bb8.color("white");
 
   stdin.on("keypress", function(ch,key) {
 
     if (key && key.ctrl && key.name === 'c') {
+      bb8.disconnect(function() {
+        console.log("BB-8 says goodbye!");
+      });
+
       process.stdin.pause();
       process.exit();
     }
@@ -96,10 +101,9 @@ module.exports = function (bb8) {
     if(key && key.name === 'q') {
       bb8.finishCalibration();
     }
-
-
-    stdin.setRawMode(true);
-    stdin.resume();
   });
+
+  stdin.setRawMode(true);
+  stdin.resume();
 
 };
