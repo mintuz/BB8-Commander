@@ -94,6 +94,13 @@ program
   });
 
 program
+  .command('gestures')
+  .description('Some gestures for your BB-8')
+  .action(function (options) {
+    executeCommand('gestures');
+  });
+
+program
   .command('drive')
   .description('Command to accept keyboard input--use arrow keys')
   .action(function (options) {
