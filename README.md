@@ -6,32 +6,31 @@ A Node CLI Tool for Sphero BB8 Robot using the [Sphero Javascript SDK](http://sd
 # Install
 Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky git clone
 
-* `git clone git@github.com:mintuz/bb8-commander.git`
-* `npm install`
-* `node index.js setup`
+* `npm install -g bb8-commander`
+* `bb8 setup`
 * Use commands below
 
 # Commands
 
 ### Utility Commands
-* `node index.js setup` - Command to save your BB8 Unit UUID to config for future reference
-* `node index.js disconnect` - Command to disconnect from your BB8 Unit
+* `bb8 setup` - Command to save your BB8 Unit UUID to config for future reference
+* `bb8 disconnect` - Command to disconnect from your BB8 Unit
 
 ### Action Commands
-* `node index.js disco` - Command to turn your BB8 Unit into a shining disco ball in the night
-* `node index.js roll` - A simple command to make your BB8 Randomly roll in any direction.
-* `node index.js desk-buddy` - A command to keep you company whilst working at your desk. Place in it's charging station to watch its head move round randomly.
-* `node index.js weather --city="manchester" --country="uk" --api-key="ABCD"` - Command to turn your BB8 Unit into your very own weather reporter, uses OpenWeather so be sure to get your own API key
-* `node index.js tweet --hash-tag="bb8" --delay=5000` - Command to search twitter and run the first hashtag it finds as a command. Eg a tweet "#disco #bb8" would run the `disco` command --consumer-key xxx --consumer-secret xxx --access-token-key xxx --access-token-secret xxx
-* `node index.js power` - A command to get details of the battery state.
-* `node index.js drive` - A command to enable you to take input from the keyboard and 'drive' your BB-8 with the arrow keys.
-* `node index.js express --port=4000` - Command to run an express server which has a single POST endpoint which you can send a JSON object to. See below for more details.
+* `bb8 disco` - Command to turn your BB8 Unit into a shining disco ball in the night
+* `bb8 roll` - A simple command to make your BB8 Randomly roll in any direction.
+* `bb8 desk-buddy` - A command to keep you company whilst working at your desk. Place in it's charging station to watch its head move round randomly.
+* `bb8 weather --city="manchester" --country="uk" --api-key="ABCD"` - Command to turn your BB8 Unit into your very own weather reporter, uses OpenWeather so be sure to get your own API key
+* `bb8 tweet --hash-tag="bb8" --delay=5000` - Command to search twitter and run the first hashtag it finds as a command. Eg a tweet "#disco #bb8" would run the `disco` command --consumer-key xxx --consumer-secret xxx --access-token-key xxx --access-token-secret xxx
+* `bb8 power` - A command to get details of the battery state.
+* `bb8 drive` - A command to enable you to take input from the keyboard and 'drive' your BB-8 with the arrow keys.
+* `bb8 express --port=4000` - Command to run an express server which has a single POST endpoint which you can send a JSON object to. See below for more details.
 
 ### Express Server
 
 Having the ability to run an Express server to issue commands to the BB8 unit opens up a bunch of possibilities. One of the main benefits of having an Express server is that you can integrate into [IFTTT](https://ifttt.com/) and at that point, you have entered the Internet of things.
 
-To get started is really easy, all you need to do is run `node index.js express --port=4000` adn once your BB8 is connected, an Express server will be started.
+To get started is really easy, all you need to do is run `bb8 express --port=4000` adn once your BB8 is connected, an Express server will be started.
 
 You can then send commands directly to it via a POST request. It supports any SpheroSDK command as well as custom commands we have created. See below for some examples.
 

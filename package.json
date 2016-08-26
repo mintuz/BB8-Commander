@@ -1,8 +1,11 @@
 {
   "name": "bb8-commander",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "A Node CLI Tool for Sphero BB8 Robot.",
   "main": "index.js",
+  "bin": {
+    "bb8": "bin/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mintuz/bb8-commander.git"
@@ -10,6 +13,10 @@
   "keywords": [
     "BB8",
     "Sphero",
+    "BB8 Commander",
+    "BB8 Javascript",
+    "BB8 Robot",
+    "Sphero Robot",
     "Robot"
   ],
   "author": "",
