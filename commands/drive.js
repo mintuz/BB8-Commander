@@ -64,4 +64,6 @@ module.exports = function (bb8) {
 
   stdin.setRawMode(true);
   stdin.resume();
+
+  return false;
 };

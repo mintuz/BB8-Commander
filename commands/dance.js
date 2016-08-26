@@ -17,4 +17,5 @@ module.exports = function (bb8) {
        clearInterval(colorTimer);
     }, 5000);
 
+    return false;
 };

@@ -13,7 +13,7 @@ module.exports = function (bb8) {
 
     var partiallyAppliedMoveHead = _.partial(moveHead, bb8);
 
-    setInterval(partiallyAppliedMoveHead, 4000);
+    return setInterval(partiallyAppliedMoveHead, 4000);
 };
 
 

@@ -52,7 +52,7 @@ module.exports = function (bb8, options) {
 
     commanderExecuter();
 
-    setInterval(function () {
+    return setInterval(function () {
         commanderExecuter();
     }, intervalDelay);
 };
