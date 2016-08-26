@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var program = require('commander'),
     packageFile = require('../package.json'),
     executeCommand = require('../libs/execute-command');
