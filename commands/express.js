@@ -24,7 +24,7 @@ var stopCustomCommands = function () {
 
     runningCommandIds = [];
     
-    return commandsStopped.join(', ');
+    return commandsStopped;
 };
 
 var spheroCommandExecuter = function (bb8, requestBody, res) {
