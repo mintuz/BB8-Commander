@@ -17,19 +17,17 @@ var callbackFactory = function (res) {
 
 var stopCustomCommands = function () {
 
-    var commandsStopped = [];
-
-    runningCommandIds.forEach(function (commandObj) {
+    var commandsStopped = runningCommandIds.map(function (commandObj) {
         clearInterval(commandObj.commandRunningId);
-        commandsStopped.push(commandObj.commandName);
+        return commandObj.commandName;
     });
 
     runningCommandIds = [];
-    return commandsStopped;
+    
+    return commandsStopped.join(', ');
 };
 
 var spheroCommandExecuter = function (bb8, requestBody, res) {
-
     if (_.isString(requestBody.value)) {
         bb8[requestBody.command](requestBody.value, callbackFactory(res));
     } else if (_.isArray(requestBody.value)) {

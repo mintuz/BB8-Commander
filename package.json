@@ -1,6 +1,6 @@
 {
   "name": "bb8-commander",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A Node CLI Tool for Sphero BB8 Robot.",
   "main": "index.js",
   "bin": {

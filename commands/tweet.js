@@ -44,6 +44,7 @@ var executeTwitterCommand = function (bb8, options) {
 };
 
 module.exports = function (bb8, options) {
+    
     var intervalDelay = options.delay || 10000;
 
     console.log('Let\'s get tweets!');
