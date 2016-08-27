@@ -78,7 +78,6 @@ program
   .description('Command to setup express server')
   .option('-p, --port <port>', 'Port to run express on. Defaults to 3000')
   .action(function (options) {
-      console.log("1");
       executeCommand.connectAndSendCommand('express', options);
   });
 

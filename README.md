@@ -125,6 +125,34 @@ Request Body
 }
 ```
 
+### Using BB8 Commander in your own projects.
+It's cool being able to run a tool from your terminal but it's even cooler to be able to extend and build your own applications.
+
+Run `npm install bb8-commander --save` within your projects root directory and here is some example code.
+
+Some commands such as `disco` return a setInterval ID. This allows you to stop a command from continuously running by running `clearInterval(id)`
+
+```
+var bb8 = require('bb8-commander');
+
+// Used to create a .bb8config file within your users home directory.
+bb8.setup();
+
+var name = 'express';
+var options = {
+  port: 4000
+};
+
+// Used to execute the command express 
+bb8.executeCommand(name, options);
+
+// Used to execute the command disco
+var id = bb8.executeCommand('disco');
+
+// Used to cancel the disco command.
+clearInterval(id);
+```
+
 # Examples
 * [How to have Hubot talk to BB-8 using Express Server](https://medium.com/@saraford/how-to-have-hubot-in-slack-send-commands-to-bb-8-700d2f3c953d) by [@saraford](https://github.com/saraford)
 
