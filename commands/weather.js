@@ -12,7 +12,7 @@ module.exports = function (bb8, options) {
         console.log('Rain Rain go away, come back another day!');
 
         // Every 10 seconds, lets poll the weather
-        setInterval(function () {
+        return setInterval(function () {
 
             weatherRequester(function (error, weatherData) {
 
@@ -37,4 +37,5 @@ module.exports = function (bb8, options) {
         console.log('WEATHER_KEY env for openweather is not present');
     }
 
+    return false;
 };

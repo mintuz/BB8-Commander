@@ -10,6 +10,8 @@ Not yet on npm so you'll have to do it the good'ol fasioned way with a cheeky gi
 * `bb8 setup`
 * Use commands below
 
+If you are struggling to connect to BB8 it might be worth checking out the troubleshoot section of @saraford's [blog post](https://medium.com/@saraford/how-to-have-hubot-in-slack-send-commands-to-bb-8-700d2f3c953d#.4zjscutl83).
+
 # Commands
 
 ### Utility Commands
@@ -106,6 +108,50 @@ Request Body
 Obviously you wouldn’t pass your OAuth information like this (BB8 Commander supports environment variables for secure data) but the important thing to note here is, anything that can be passed to the CLI tool can also be passed into the express server endpoint.
 
 A suite difference between native commands and custom commands is that native commands that require multiple parameters will be passed as an array whilst custom commands will be objects. The reason for this is custom commands are key value pairs due to them sharing the same code as the CLI tool.
+
+### Stopping a custom command with the express server.
+Some custom commands such as the desk-buddy command or the weather command loop forever until you tell BB8 to stop via the express server.
+
+To stop a previous BB8 Command send the following POST Request. This will keep the express server running but will stop BB8 doing whatever he's doing.
+
+Post Request - localhost:3000/
+
+Request Body
+
+```
+{
+  "mode":"custom",
+  "command":"stop"
+}
+```
+
+### Using BB8 Commander in your own projects.
+It's cool being able to run a tool from your terminal but it's even cooler to be able to extend and build your own applications.
+
+Run `npm install bb8-commander --save` within your projects root directory and here is some example code.
+
+Some commands such as `disco` return a setInterval ID. This allows you to stop a command from continuously running by running `clearInterval(id)`
+
+```
+var bb8 = require('bb8-commander');
+
+// Used to create a .bb8config file within your users home directory.
+bb8.setup();
+
+var name = 'express';
+var options = {
+  port: 4000
+};
+
+// Used to execute the command express 
+bb8.executeCommand(name, options);
+
+// Used to execute the command disco
+var id = bb8.executeCommand('disco');
+
+// Used to cancel the disco command.
+clearInterval(id);
+```
 
 # Examples
 * [How to have Hubot talk to BB-8 using Express Server](https://medium.com/@saraford/how-to-have-hubot-in-slack-send-commands-to-bb-8-700d2f3c953d) by [@saraford](https://github.com/saraford)

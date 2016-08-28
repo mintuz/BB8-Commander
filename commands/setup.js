@@ -43,7 +43,5 @@ module.exports = function() {
             console.log('UUID: ' + peripheral.uuid);
             console.log('Local Name: ' + peripheral.advertisement.localName);
         }
-
     });
-
 };

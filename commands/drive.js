@@ -16,7 +16,7 @@ module.exports = function (bb8) {
   console.log("starting to listen for arrow key presses");
 
   stdin.on("keypress", function(ch,key) {
-    //console.log('got "keypress"', key);
+
     bb8.color('#000000');
 
     if(key && key.name === 'e') {
@@ -29,33 +29,35 @@ module.exports = function (bb8) {
         }, 300);
       });
     }
+
     if(key && key.name === 'q') {
       bb8.finishCalibration();
     }
+
     if(key && key.name === 'w'){
-      //console.log('up');
       bb8.stop();
       bb8.roll(150, 0);
     }
+
     if(key && key.name === 'd'){
-      //console.log('right');
       bb8.stop();
       bb8.roll(150, 90);
     }
+
     if(key && key.name === 's'){
-      //console.log('down');
       bb8.stop();
       bb8.roll(150, 180);
     }
+
     if(key && key.name === 'a'){
-      //console.log('left');
       bb8.stop();
       bb8.roll(150, 270);
     }
+
     if(key && key.name === 'space'){
-      //console.log('space');
       bb8.stop();
     }
+    
     if (key && key.ctrl && key.name === 'c') {
       process.stdin.pause();
       process.exit();
@@ -64,4 +66,6 @@ module.exports = function (bb8) {
 
   stdin.setRawMode(true);
   stdin.resume();
+
+  return false;
 };

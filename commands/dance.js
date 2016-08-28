@@ -1,4 +1,5 @@
 module.exports = function (bb8) {
+    
     console.log("BB-8 got moves!!");
 
     var movesTimer = setInterval(function() {
@@ -17,4 +18,5 @@ module.exports = function (bb8) {
        clearInterval(colorTimer);
     }, 5000);
 
+    return false;
 };
