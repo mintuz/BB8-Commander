@@ -2,6 +2,18 @@ var bb8 = require('./bb8-instance')(),
   appRootPath = require('app-root-path'),
   _ = require('lodash');
 
+module.exports.connectAndSendCustomCommand = function(filePath, options) {
+  if (bb8) {
+    bb8.connect(function () {
+      require(filePath)(bb8, options);
+    });
+
+    return;
+  }
+
+  console.log("BB8 Is not Connected");
+}
+
 module.exports.connectAndSendCommand = function (command, options) {
   
   if (bb8) {
