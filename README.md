@@ -134,6 +134,7 @@ Some commands such as `disco` return a setInterval ID. This allows you to stop a
 
 ```
 var bb8 = require('bb8-commander');
+var appRootPath = require('app-root-path');
 
 // Used to create a .bb8config file within your users home directory.
 bb8.setup();
@@ -151,6 +152,33 @@ var id = bb8.executeCommand('disco');
 
 // Used to cancel the disco command.
 clearInterval(id);
+
+
+// Used to execute a custom command you have created.
+var filePath = appRootPath + '/path/to/custom/command';
+bb8.executeCustomCommand(filePath, options)
+
+```
+
+You can write custom command which can be executed via the executeCustomCommand function. A custom command accepts two parameters, the bb8 instance and any options you wish to pass in.
+
+```
+// example custom command
+module.exports = function(bb8, options) {
+  bb8.color(options.colour);
+  bb8.roll(0, Math.floor(Math.random() * 180));
+}
+```
+
+You can then execute this command like this
+
+```
+var bb8 = require('bb8-commander');
+var appRootPath = require('app-root-path');
+
+// Used to execute a custom command you have created.
+var filePath = appRootPath + '/path/to/custom/command';
+bb8.executeCustomCommand(filePath, {colour: '#000000'});
 ```
 
 # Examples
