@@ -1,3 +1,4 @@
+var _ = require('lodash')
 module.exports = function (bb8,options) {
     var radius = options.radius; //mm
     var distance = 2*Math.PI*radius;
