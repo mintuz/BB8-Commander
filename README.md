@@ -190,6 +190,7 @@ bb8.executeCustomCommand(filePath, {colour: '#000000'});
 * [@citypaul](http://twitter.com/paulhammond)
 * [@sud-puth](http://twitter.com/sud_)
 * [@saraford](http://twitter.com/saraford)
+* [@veaga](http://twitter.com/veaga)
 
 # Want to contribute?
 
